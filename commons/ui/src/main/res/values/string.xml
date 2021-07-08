@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">XKCD Comics</string>
+    <!--    Network check string-->
+    <string name="network_online" translatable="false">Back online!</string>
+    <string name="network_offline" translatable="false">No internet connection!</string>
+    <string name="connection_time_out">Failed to connect to server please check you network!</string>
+    <string name="generic_error">Something went wrong please try again!</string>
+    <!--bottom navigation bar text-->
+    <string name="browse">Browse</string>
+    <string name="comics">Comics</string>
+    <string name="vertical_more">More</string>
+    <!--    card exception text for comics-->
+    <string name="title_text">This is a title</string>
+    <!--    image description text-->
+    <string name="comic_strip_image">Comic Strip Image</string>
+    <!--    share exception text-->
+    <string name="share">Share</string>
+    <!--    fab text-->
+    <!--share to others text-->
+    <string name="share_title">Share this Comic</string>
+    <string name="share_info">"Hey! Check out this XKCD comic:</string>
+    <!--    no comics found exception text-->
+    <string name="no_comic_found_please_try_again_later">No comic found. Please try again later</string>
+    <string name="retry">Retry</string>
+    <!--   comic fragment list page text-->
+    <string name="xkcd_comic_list">XKCD Comic List</string>
+    <!--    hint text in edit text-->
+    <string name="search_comics">Search for comics</string>
+    <!--    on search on comics found text-->
+    <string name="no_search_comics">No results found</string>
+</resources>
