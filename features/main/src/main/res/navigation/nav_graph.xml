@@ -8,4 +8,3 @@
     <include app:graph="@navigation/comic_list_graph" />
     <include app:graph="@navigation/comic_more_graph" />
 </navigation>
-
