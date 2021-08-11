@@ -1,5 +1,6 @@
 import build.AndroidSDK
 import build.App
+
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.KOTLIN_ANDROID)
@@ -8,7 +9,7 @@ plugins {
 }
 
 android {
-  
+
     compileSdk = AndroidSDK.COMPILE_SDK_VERSION
     buildToolsVersion = AndroidSDK.BUILD_VERSION_TOOLS
 

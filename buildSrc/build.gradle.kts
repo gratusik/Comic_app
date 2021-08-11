@@ -12,7 +12,7 @@ kotlinDslPluginOptions {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.0")
+    implementation("com.android.tools.build:gradle:4.1.3")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10")
     implementation("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5")
 
