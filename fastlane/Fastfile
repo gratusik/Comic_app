@@ -27,7 +27,7 @@ platform :android do
   lane :beta do
       store_password = "Jijopaul08$"
       key_password = "Jijopaul08$"
-      releaseFilePath ="/Users/jijo/Android/key/xkcdcomic"
+      releaseFilePath ="${HOME}/key/xkcdcomic"
 
     gradle( task: 'bundle',
                build_type: 'Release',
