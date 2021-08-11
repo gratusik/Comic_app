@@ -1,2 +1,2 @@
 json_key_file File.absolute_path "../key_json_file.json"
-package_nam "com.gratus.xkcdcomics"
+package_name "com.gratus.xkcdcomics"
