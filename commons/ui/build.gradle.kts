@@ -1,9 +1,44 @@
 plugins {
-    id("commons.android-library")
+    id("com.android.library")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
+    id("kotlin-kapt")
+}
+android {
+    compileSdk = build.AndroidSDK.COMPILE_SDK_VERSION
+    buildToolsVersion = build.AndroidSDK.BUILD_VERSION_TOOLS
+    
+    defaultConfig {
+        minSdk = build.AndroidSDK.MIN_SDK_VERSION
+        targetSdk = build.AndroidSDK.TARGET_SDK_VERSION
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    
+    buildFeatures {
+        viewBinding = true
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
     implementation(project(build.Modules.Common.CORE))
+    implementation(dependency.Libs.KOTLIN)
     implementation(dependency.Libs.APPCOMPAT)
     implementation(dependency.Libs.MATERIAL)
     implementation(dependency.Libs.NAVIGATION_FRAGMENT)
