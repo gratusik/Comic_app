@@ -8,14 +8,7 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        getByName("release") {
-            storePassword = "Jijopaul08$"
-            keyAlias = "xkcdkey"
-            keyPassword = "Jijopaul08$"
-            storeFile = file("/Users/jijo/Android/key/xkcdcomic")
-        }
-    }
+  
     compileSdk = AndroidSDK.COMPILE_SDK_VERSION
     buildToolsVersion = AndroidSDK.BUILD_VERSION_TOOLS
 
