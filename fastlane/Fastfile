@@ -28,7 +28,7 @@ platform :android do
       store_password = "Jijopaul08$"
       key_password = "Jijopaul08$"
       releaseFilePath ="/Users/jijo/Android/key/xkcdcomic"
-      gradle(task: 'clean')
+
     gradle( task: 'bundle',
                build_type: 'Release',
                 properties: {
