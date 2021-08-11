@@ -1,7 +1,6 @@
 package commons
 
 import build.AndroidSDK
-import build.App
 import dependency.Libs
 
 plugins {
@@ -11,9 +10,9 @@ plugins {
     id("kotlin-kapt")
 }
 android {
-    compileSdk= AndroidSDK.COMPILE_SDK_VERSION
+    compileSdk = AndroidSDK.COMPILE_SDK_VERSION
     buildToolsVersion = AndroidSDK.BUILD_VERSION_TOOLS
-    
+
     defaultConfig {
         minSdk = AndroidSDK.MIN_SDK_VERSION
         targetSdk = AndroidSDK.TARGET_SDK_VERSION
@@ -44,7 +43,7 @@ android {
 
 dependencies {
     implementation(Libs.KOTLIN)
-    
+
     kapt(dependency.AnnotationProcessorsDependencies.DAGGER_COMPILER)
     kapt(dependency.AnnotationProcessorsDependencies.DAGGER_ANDROID_COMPILER)
     kapt(dependency.AnnotationProcessorsDependencies.ROOM_COMPILER)
