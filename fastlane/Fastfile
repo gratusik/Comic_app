@@ -25,8 +25,8 @@ platform :android do
 
   desc "Deploy a beta version to the Google Play"
   lane :beta do
-      store_password = $BITRISEIO_ANDROID_KEYSTORE_PASSWORD
-      key_password = $BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD
+      store_password = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PASSWORD")
+      key_password = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
       releaseFilePath = File.absolute_path "../xkcdcomic"
 
     gradle( task: 'bundle',
@@ -34,7 +34,7 @@ platform :android do
                 properties: {
                        "android.injected.signing.store.file" => releaseFilePath,
                        "android.injected.signing.store.password" => store_password,
-                       "android.injected.signing.key.alias" => $BITRISEIO_ANDROID_KEYSTORE_ALIAS,
+                       "android.injected.signing.key.alias" => System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS"),
                        "android.injected.signing.key.password" => key_password,
                      })
     upload_to_play_store(track: 'beta')
