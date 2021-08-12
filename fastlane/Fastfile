@@ -25,7 +25,7 @@ platform :android do
 
   desc "Deploy a beta version to the Google Play"
   lane :beta do
-      store_password = ENV['BITRISEIO_ANDROID_KEYSTORE_PASSWORD')
+      store_password = ENV['BITRISEIO_ANDROID_KEYSTORE_PASSWORD']
       key_password = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
       releaseFilePath = File.absolute_path "../xkcdcomic"
 
