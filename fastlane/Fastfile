@@ -27,13 +27,16 @@ platform :android do
   lane :beta do
     apk_path = Actions.lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
     mapping_path = Actions.lane_context[SharedValues::GRADLE_MAPPING_TXT_OUTPUT_PATH]
-    build_number = FastLane::Actions::android_get_version_name(
-        gradle_file: apk_path
+    version_name =  = get_version_name(
+                           gradle_file_path:"project/build.gradle",
+                           ext_constant_name:"versionName"
+                           )
+    print version_name
+    version_number = get_version_name(
+          gradle_file_path:"project/build.gradle",
+                                   ext_constant_name:"versionCode"
     )
-    print build_number
-    version_number =  FastLane::Actions::android_get_version_code(
-        gradle_file: apk_path
-    )
+    print version_number
     store_password = ENV['BITRISEIO_ANDROID_KEYSTORE_PASSWORD']
     key_password = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
     key_password = ENV['BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD']
@@ -44,7 +47,7 @@ platform :android do
             properties: {
                    "android.injected.signing.store.file" => releaseFilePath,
                    "android.injected.signing.store.password" => store_password,
-                   "android.injected.signing.key.alias" => "xkcdkey",
+                    "android.injected.signing.key.alias" => ENV['BITRISEIO_ANDROID_KEYSTORE_ALIAS'],
                    "android.injected.signing.key.password" => key_password,
                  })
 
