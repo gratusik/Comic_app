@@ -27,11 +27,11 @@ platform :android do
   lane :beta do
     apk_path = Actions.lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
     mapping_path = Actions.lane_context[SharedValues::GRADLE_MAPPING_TXT_OUTPUT_PATH]
-    build_number = android_get_version_name(
+    build_number = FastLane::Actions::android_get_version_name(
         gradle_file: apk_path
     )
     print build_number
-    version_number = android_get_version_code(
+    version_number =  FastLane::Actions::android_get_version_code(
         gradle_file: apk_path
     )
     store_password = ENV['BITRISEIO_ANDROID_KEYSTORE_PASSWORD']
@@ -48,7 +48,6 @@ platform :android do
                    "android.injected.signing.key.password" => key_password,
                  })
 
-    print version_number
     upload_to_play_store(track: 'beta')
   end
 
