@@ -27,12 +27,12 @@ platform :android do
   lane :beta do
     apk_path = Actions.lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
     mapping_path = Actions.lane_context[SharedValues::GRADLE_MAPPING_TXT_OUTPUT_PATH]
-    version_name =  Actions.get_version_name(
+    version_name =  Fastlane::Actions:.get_version_name(
                            gradle_file_path:"project/build.gradle",
                            ext_constant_name:"versionName"
                            )
     print version_name
-    version_number = Actions.get_version_name(
+    version_number = Fastlane::Actions:.get_version_name(
           gradle_file_path:"project/build.gradle",
                                    ext_constant_name:"versionCode"
     )
