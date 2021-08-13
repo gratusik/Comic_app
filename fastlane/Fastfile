@@ -34,9 +34,10 @@ platform :android do
     version_number = android_get_version_code(
         gradle_file: apk_path
     )
-    store_password = "Jijopaul08$"
-    key_password = "Jijopaul08$"
-    releaseFilePath ="${$BITRISE_SOURCE_DIR}/xkcdcomic"
+    store_password = ENV['BITRISEIO_ANDROID_KEYSTORE_PASSWORD']
+    key_password = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
+    key_password = ENV['BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD']
+    releaseFilePath = File.absolute_path "../xkcdcomic"
 
     gradle( task: 'bundle',
            build_type: 'Release',
