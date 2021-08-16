@@ -14,31 +14,30 @@
 # update_fastlane
 
 default_platform(:android)
-
+$artifacts_path = File.absolute_path "../artifacts"
 platform :android do
   desc "Runs all the tests"
   lane :test do
-    gradle(task: "test")
+   apk_path = Actions.lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
+     puts "VALUE = #{apk_path}"
+     value = get_version_name(
+            gradle_file_path:"/Users/jijo/Android/Fosanis/fosanis-android-beta/app/build.gradle",
+            ext_constant_name:"versionName"
+            )
+      puts "VALUE = #{value}"
+         value1 = get_version_name(
+                  gradle_file_path:"/Users/jijo/Android/Fosanis/fosanis-android-beta/app/build.gradle",
+                  ext_constant_name:"versionCode"
+                  )
+            puts "VALUE = #{value1}"
   end
 
   
 
   desc "Deploy a beta version to the Google Play"
   lane :beta do
-    apk_path = Actions.lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
-    mapping_path = Actions.lane_context[SharedValues::GRADLE_MAPPING_TXT_OUTPUT_PATH]
-    version_name =  Fastlane::Actions:get_version_name(
-                           gradle_file_path:"project/build.gradle",
-                           ext_constant_name:"versionName"
-                           )
-    print version_name
-    version_number = Fastlane::Actions:get_version_name(
-          gradle_file_path:"project/build.gradle",
-                                   ext_constant_name:"versionCode"
-    )
-    print version_number
+
     store_password = ENV['BITRISEIO_ANDROID_KEYSTORE_PASSWORD']
-    key_password = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
     key_password = ENV['BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD']
     releaseFilePath = File.absolute_path "../xkcdcomic"
 
@@ -52,6 +51,16 @@ platform :android do
                  })
 
     upload_to_play_store(track: 'beta')
+    apk_path = Actions.lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
+    print apk_path
+    mapping_path = Actions.lane_context[SharedValues::GRADLE_MAPPING_TXT_OUTPUT_PATH]
+    copy_artifacts(
+         target_path: $artifacts_path,
+         artifacts: [
+           apk_path,
+           mapping_path
+         ]
+       )
   end
 
   desc "Deploy a new version to the Google Play"
